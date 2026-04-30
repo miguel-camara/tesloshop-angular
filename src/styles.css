@@ -1,3 +1,11 @@
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+
+smooth-swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
 @font-face {
   font-family: 'Montserrat';
   src: url('/assets/fonts/montserrat-alternates/montserrat-alternates-medium.ttf');
