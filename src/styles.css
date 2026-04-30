@@ -2,9 +2,9 @@
 @import 'swiper/css/navigation';
 @import 'swiper/css/pagination';
 
-smooth-swiper .swiper-wrapper {
+/* smooth-swiper .swiper-wrapper {
   transition-timing-function: linear !important;
-}
+} */
 
 @font-face {
   font-family: 'Montserrat';

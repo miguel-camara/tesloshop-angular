@@ -1,14 +1,25 @@
 <h1 class="text-3xl ml-5 font-bold">Todos los productos</h1>
 <h2 class="text-xl ml-5 mb-5">Para todos los gustos</h2>
 
-<app-pagination />
-
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-2 gap-3 w-full">
-  @for (product of productsResource.value()?.products; track $index) {
-    <product-card [product]="product" />
-  }
-  <!-- Empty -->
-  @empty {
-    <p>No hay productos</p>
-  }
-</div>
+@if (productsResource.hasValue()) {
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-2 gap-3"
+  >
+    @for (product of productsResource.value().products; track $index) {
+      <product-card [product]="product" />
+    }
+    <!-- Empty -->
+    @empty {
+      <div class="col-span-full justify-center">
+        <p>No hay productos</p>
+      </div>
+    }
+  </div>
+  <app-pagination
+    class="flex justify-center my-5"
+    [currentPage]="paginationService.currentPage()"
+    [pages]="productsResource.value().pages"
+  />
+} @else {
+  <app-loading />
+}
