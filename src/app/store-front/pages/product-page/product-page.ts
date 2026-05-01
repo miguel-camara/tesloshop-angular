@@ -9,7 +9,6 @@ import { Loading } from "@shared/components/loading/loading";
   selector: 'app-product-page',
   imports: [ProductCarousel, Loading],
   templateUrl: './product-page.html',
-  styles: ``,
 })
 export class ProductPage {
   activatedRoute = inject(ActivatedRoute);
