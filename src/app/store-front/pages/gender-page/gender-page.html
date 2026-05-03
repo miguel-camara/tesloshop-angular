@@ -1,1 +1,26 @@
-<p>gender-page works!</p>
+<h1 class="text-3xl font-bold ml-5">
+  Todos los productos
+  <span class="text-accent">{{ gender() }}</span>
+</h1>
+<h2 class="text-xl ml-5 mb-5">Para todos los gustos</h2>
+
+@if (productsResource.hasValue()) {
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-2 gap-3"
+  >
+    @for (product of productsResource.value().products; track $index) {
+      <product-card [product]="product" />
+    } @empty {
+      <div class="col-span-full justify-center">
+        <p>No hay productos</p>
+      </div>
+    }
+  </div>
+  <app-pagination
+    [currentPage]="paginationService.currentPage()"
+    [pages]="productsResource.value().pages"
+    class="flex justify-center my-5"
+  />
+} @else {
+  <app-loading />
+}
