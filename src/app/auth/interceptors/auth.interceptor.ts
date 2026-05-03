@@ -7,15 +7,10 @@ export function authInterceptor(
   next: HttpHandlerFn
 ) {
 
-  if (req.url.includes('check-status')) {
-    const token = inject(AuthService).token();
+  const token = inject(AuthService).token();
+  const newReq = req.clone({
+    headers: req.headers.append('Authorization', `Bearer ${token}`),
+  });
+  return next(newReq);
 
-    const newReq = req.clone({
-      headers: req.headers.append('Authorization', `Bearer ${token}`),
-    });
-    return next(newReq);
-  }
-
-
-  return next(req);
 }

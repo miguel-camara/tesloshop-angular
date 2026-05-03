@@ -5,12 +5,13 @@ import { rxResource } from '@angular/core/rxjs-interop';
 
 import { AuthResponse } from '@auth/interfaces/auth-response.interface';
 import { User } from '@auth/interfaces/user.interface';
-// TODO: path enviroments
-import { environment } from '../../../environments/environment';
+import { environment } from '@environment/environment';
+import { Router } from '@angular/router';
 
 
 type AuthStatus = 'checking' | 'authenticated' | 'not-authenticated';
 const baseUrl = environment.baseUrl;
+
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -19,6 +20,9 @@ export class AuthService {
   private _token = signal<string | null>(localStorage.getItem('token'));
 
   private http = inject(HttpClient);
+  private router = inject(Router);
+
+  private authResponseCache = new Map<string, AuthResponse>();
 
   checkStatusResource = rxResource({
     stream: () => this.checkStatus(),
@@ -36,7 +40,7 @@ export class AuthService {
 
   user = computed(() => this._user());
   token = computed(this._token);
-
+  isAdmin = computed(() => this._user()?.roles.includes('admin') ?? false);
   login(email: string, password: string): Observable<boolean> {
     return this.http
       .post<AuthResponse>(`${baseUrl}/auth/login`, {
@@ -71,16 +75,21 @@ export class AuthService {
       return of(false);
     }
 
+    if (this.authResponseCache.has(token)) {
+      return of(this.handleAuthSuccess(this.authResponseCache.get(token)!))
+    }
+
     return this.http
       .get<AuthResponse>(`${baseUrl}/auth/check-status`, {
       })
       .pipe(
+        tap((resp) => this.authResponseCache.set(token, resp)),
         map((resp) => this.handleAuthSuccess(resp)),
         catchError((error: any) => this.handleAuthError(error))
       );
   }
 
-  logout() {
+  logout(): void {
     this._user.set(null);
     this._token.set(null);
     this._authStatus.set('not-authenticated');

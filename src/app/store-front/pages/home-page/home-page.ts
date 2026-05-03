@@ -1,10 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { rxResource, toSignal } from '@angular/core/rxjs-interop';
+import { rxResource } from '@angular/core/rxjs-interop';
 import { ProductService } from '@products/services/product-service';
 import { ProductCard } from "@products/components/product-card/product-card";
 import { Pagination } from "@shared/components/pagination/pagination";
-import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs';
 import { PaginationService } from '@shared/components/pagination/pagination.service';
 import { Loading } from "@shared/components/loading/loading";
 

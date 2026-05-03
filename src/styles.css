@@ -1,11 +1,3 @@
-@import 'swiper/css';
-@import 'swiper/css/navigation';
-@import 'swiper/css/pagination';
-
-/* smooth-swiper .swiper-wrapper {
-  transition-timing-function: linear !important;
-} */
-
 @font-face {
   font-family: 'Montserrat';
   src: url('/assets/fonts/montserrat-alternates/montserrat-alternates-medium.ttf');
@@ -26,17 +18,6 @@
       opacity: 1;
     }
   }
-
-  /* --animate-wiggle: wiggle 1s ease-in-out infinite;
-  @keyframes wiggle {
-    0%,
-    100% {
-      transform: rotate(-3deg);
-    }
-    50% {
-      transform: rotate(3deg);
-    }
-  } */
 }
 
 @plugin "daisyui" {

@@ -12,7 +12,6 @@ export class AuthLayout {
 
   router = inject(Router)
 
-
   pageTitle = toSignal(
     this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),

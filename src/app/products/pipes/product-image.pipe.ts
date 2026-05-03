@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { environment } from '../../../environments/environment';
+import { environment } from '@environment/environment';
 
 const baseUrl = environment.baseUrl;
 
@@ -8,6 +8,15 @@ const baseUrl = environment.baseUrl;
 })
 export class ProductImagePipe implements PipeTransform {
   transform(value: string | string[]): string {
+
+    if (value === null || !value) {
+      return './assets/images/no-image.jpg';
+    }
+
+    if (typeof value === 'string' && value.startsWith('blob:')) {
+      return value;
+    }
+
     if (typeof value === 'string') {
       return `${baseUrl}/files/product/${value}`;
     }
@@ -17,6 +26,7 @@ export class ProductImagePipe implements PipeTransform {
     if (!image) {
       return './assets/images/no-image.jpg';
     }
+
 
     return `${baseUrl}/files/product/${image}`;
   }
