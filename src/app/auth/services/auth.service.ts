@@ -6,8 +6,6 @@ import { rxResource } from '@angular/core/rxjs-interop';
 import { AuthResponse } from '@auth/interfaces/auth-response.interface';
 import { User } from '@auth/interfaces/user.interface';
 import { environment } from '@environment/environment';
-import { Router } from '@angular/router';
-
 
 type AuthStatus = 'checking' | 'authenticated' | 'not-authenticated';
 const baseUrl = environment.baseUrl;
@@ -20,7 +18,6 @@ export class AuthService {
   private _token = signal<string | null>(localStorage.getItem('token'));
 
   private http = inject(HttpClient);
-  private router = inject(Router);
 
   private authResponseCache = new Map<string, AuthResponse>();
 
@@ -48,7 +45,6 @@ export class AuthService {
         password: password,
       })
       .pipe(
-        tap(res => console.log(res)),
         map((resp) => this.handleAuthSuccess(resp)),
         catchError((error: any) => this.handleAuthError(error))
       );
@@ -62,7 +58,6 @@ export class AuthService {
         fullName: fullName
       })
       .pipe(
-        tap(res => console.log(res)),
         map((resp) => this.handleAuthSuccess(resp)),
         catchError((error: any) => this.handleAuthError(error))
       );

@@ -1,59 +1,81 @@
 # TesloshopAngular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.6.
+<p align="center">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" height="50" alt="angular logo"/>&nbsp;
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" height="50" alt="tailwindcss logo" />
+</p>
 
-## Development server
+**TesloshopAngular** aplicacion de ropa en donde podemos encontrar lista de producto para hombre, mujer y niño por lo cual usamos un backen propio hecho en **Nest**. Hecho con **Angular** y para los estilos **Tailwind CSS** y **daisyUI**.
 
-To start a local development server, run:
+## Run Locally
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Clone the project
 
 ```bash
-ng generate component component-name
+  git clone https://github.com/miguel-camara/tesloshop-angular.git
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Go to the project directory
 
 ```bash
-ng generate --help
+  cd tesloshop-angular
 ```
 
-## Building
-
-To build the project run:
+Install dependencies
 
 ```bash
-ng build
+  npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Generate the `environment.ts` based on the `environment.developments.ts`. Backend required
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Run the script
 
 ```bash
-ng test
+  ng g environments
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Start the server
 
 ```bash
-ng e2e
+  npm run start
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Environment Variables
 
-## Additional Resources
+To run this project, you will need to add the following environment variables to your **environment.ts** files
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+`baseUrl`
+
+## Demo
+
+[Demo](https://teslo-shop-app-miguel.netlify.app/#/)
+
+## Screenshots
+
+![App Screenshot](public/screens/screen-3.png)
+
+![App Screenshot](public/screens/screen-1.png)
+
+![App Screenshot](public/screens/screen-2.png)
+
+![App Screenshot](public/screens/screen-4.png)
+
+![App Screenshot](public/screens/screen-5.png)
+
+![App Screenshot](public/screens/screen-6.png)
+
+![App Screenshot](public/screens/screen-7.png)
+
+![App Screenshot](public/screens/screen-8.png)
+
+## Features
+
+- **Tesloshop Angular:** Aplicación de ropa, con diferentes secciones de productos para hombre, mujer y niño.
+- **Login:** Sección para iniciar sesión con un usuario ya registrado.
+- **Register:** Sección para registrarse.
+- **Admin:** Este es super usuario el cual tiene un panel propio en donde se listan todos los productos y puedo editarlos así como también crear nuevos productos.
+
+## Tech Stack
+
+**Frontend:** Angular, Tailwind CSS y daisyUI
