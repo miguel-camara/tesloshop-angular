@@ -1,7 +1,7 @@
 <div class="carousel rounded-box w-full h-125">
   @for (imgIdx of imageCarousel(); track $index; let i = $index) {
     <div #item class="carousel-item relative w-full">
-      <img [src]="imgIdx.value! | productImage" class="w-full object-cover" />
+      <img [srcset]="imgIdx.value! | productImage" class="w-full object-cover" />
       <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
         <a (click)="navigate(imgIdx.prev ?? 0)" class="btn btn-ghost btn-circle"
           ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

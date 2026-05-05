@@ -69,7 +69,9 @@
 
     @if (authService.authStatus() === 'authenticated') {
       <p class="text-secondary italic">{{ authService.user()?.fullName }}</p>
-      <button class="btn btn-sm btn-error" (click)="authService.logout()">Salir</button>
+      <button routerLink="/auth/login" class="btn btn-sm btn-error" (click)="authService.logout()">
+        Salir
+      </button>
     }
     <!--  -->
     @else if (authService.authStatus() === 'not-authenticated') {

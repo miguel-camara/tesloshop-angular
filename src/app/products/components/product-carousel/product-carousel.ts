@@ -7,7 +7,6 @@ interface ImgsValue {
   value: string | null;
 }
 
-
 @Component({
   selector: 'product-carousel',
   imports: [ProductImagePipe],
